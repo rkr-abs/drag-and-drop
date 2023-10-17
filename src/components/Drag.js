@@ -20,7 +20,7 @@ const Drag = ({ children, type }) => {
       ref={drag}
       style={{
         cursor: "move",
-        // opacity: isDragging ? 0.5 : 1,
+        opacity: isDragging ? 0 : 1,
       }}
     >
       {children}
