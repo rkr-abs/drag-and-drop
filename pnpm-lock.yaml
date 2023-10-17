@@ -7,6 +7,7 @@ specifiers:
   react: ^18.2.0
   react-dnd: ^16.0.1
   react-dnd-html5-backend: ^16.0.1
+  react-dnd-preview: ^8.0.3
   react-dnd-touch-backend: ^16.0.1
   react-dom: ^18.2.0
   react-scripts: 5.0.1
@@ -19,6 +20,7 @@ dependencies:
   react: 18.2.0
   react-dnd: 16.0.1_react@18.2.0
   react-dnd-html5-backend: 16.0.1
+  react-dnd-preview: 8.0.3_ajxydgv6wvb6awzgtymnmahb3a
   react-dnd-touch-backend: 16.0.1
   react-dom: 18.2.0_react@18.2.0
   react-scripts: 5.0.1_react@18.2.0
@@ -8584,6 +8586,16 @@ packages:
     resolution: {integrity: sha512-Wu3dw5aDJmOGw8WjH1I1/yTH+vlXEL4vmjk5p+MHxP8HuHJS1lAGeIdG/hze1AvNeXWo/JgULV87LyQOr+r5jw==}
     dependencies:
       dnd-core: 16.0.1
+    dev: false
+
+  /react-dnd-preview/8.0.3_ajxydgv6wvb6awzgtymnmahb3a:
+    resolution: {integrity: sha512-s69Ro47QYDthDhj73iQ0VioMCjtlZ1AytKBDkQaHKm5DTjA8D2bIaFKCBQd330QEW0SIzqLJrZGCSlIY2xraJg==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.2 || ^18.0.0
+      react-dnd: ^16.0.1
+    dependencies:
+      react: 18.2.0
+      react-dnd: 16.0.1_react@18.2.0
     dev: false
 
   /react-dnd-touch-backend/16.0.1:
