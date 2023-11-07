@@ -8,7 +8,7 @@ const defaultStyle = {
   position: "relative",
 };
 
-const Drop = ({ children, style, acceptType, dropType }) => {
+const Drop = ({ children, style, acceptType, draggable, dragType }) => {
   const [droppedItems, setDroppedItems] = useState([]);
 
   const [{ isOver }, drop] = useDrop({
@@ -31,11 +31,15 @@ const Drop = ({ children, style, acceptType, dropType }) => {
       }}
     >
       {children}
-      {droppedItems.map((item, index) => (
-        <Drag key={index} type={dropType}>
-          {item}
-        </Drag>
-      ))}
+      {droppedItems.map((item, index) =>
+        draggable ? (
+          <Drag key={index} type={dragType}>
+            {item}
+          </Drag>
+        ) : (
+          <div key={index}>{item}</div>
+        )
+      )}
     </div>
   );
 };

@@ -1,17 +1,17 @@
 const CACHE_NAME = "cache-v4";
-const urlsToCache = [
-  "/",
+const OFFLINE_PAGE = "offline.html";
+const cacheList = [
+  OFFLINE_PAGE,
   "/index.html",
   "/script.js",
   "/naruto.png",
-  // "/sasuke.png",
   "/static/js/bundle.js",
 ];
 
 this.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
+      return cache.addAll(cacheList);
     })
   );
   this.skipWaiting();
@@ -20,12 +20,18 @@ this.addEventListener("install", (event) => {
 this.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      if (response) {
+        return response;
+      }
+
+      return fetch(event.request).catch((error) => {
+        return caches.match(OFFLINE_PAGE)
+      });
     })
   );
 });
 
-this.addEventListener("activate", function (event) {
+this.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -37,7 +43,7 @@ this.addEventListener("activate", function (event) {
             return caches.delete(cacheName);
           })
       );
-    }),
-    this.clients.claim()
+    })
   );
+  this.clients.claim();
 });

@@ -3,6 +3,7 @@ import DragContainer from "./components/DragContainer";
 import Drop from "./components/Drop";
 import Drag from "./components/Drag";
 import './App.css';
+import OfflineAlert from "./components/OfflineAlert";
 
 const colors = [
   { color: "red", image: "/naruto.png" },
@@ -36,17 +37,18 @@ const App = () => {
       <div style={flex}>
         <div style={{ marginRight: "20px" }}>
           <h1>Container</h1>
-          <Drop style={flex} acceptType="Left" dropType="Right">
+          <Drop style={flex} acceptType="Left" draggable={true} dragType="Right">
             Drop Here
           </Drop>
         </div>
         <div>
           <h1>Draggable</h1>
-          <Drop style={flex} acceptType="Right" dropType="Left">
+          <Drop style={flex} acceptType="Right">
             <Draggable />
           </Drop>
         </div>
       </div>
+      <OfflineAlert/>
     </DragContainer>
   );
 };
